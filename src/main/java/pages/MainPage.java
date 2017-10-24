@@ -27,6 +27,7 @@ public class MainPage extends BasePage {
 
     public InsureTraveler openInsureTraveler() {
         insureBtn.click();
+        waitElementVisibility(insureTraveler, 5, 1000);
         insureTraveler.click();
         return new InsureTraveler(driver);
     }

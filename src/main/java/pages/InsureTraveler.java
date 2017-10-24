@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class InsureTraveler extends BasePage{
 
+    private final String LABLE = "Страхование путешественников";
+
     @FindBy(xpath = "//H1[text()='Страхование путешественников']")
     private WebElement insureTravelerLbl;
 
@@ -22,6 +24,7 @@ public class InsureTraveler extends BasePage{
     }
 
     public SelectAmount openSelectAmount() {
+        checkFieldText(insureTravelerLbl, LABLE);
         insureTravelerLbl.click();
         formOnlineImg.click();
         return new SelectAmount(driver);
