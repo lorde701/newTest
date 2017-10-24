@@ -2,6 +2,9 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,5 +25,10 @@ public abstract class BasePage {
             expectedText = element.getAttribute("value");
         }
         assertEquals(expectedText, text);
+    }
+
+    public void waitElementVisibility(WebElement element, long timeOutInSec, long sleepInMillis) {
+        Wait<WebDriver> wait = new WebDriverWait(driver, timeOutInSec, sleepInMillis);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 }
