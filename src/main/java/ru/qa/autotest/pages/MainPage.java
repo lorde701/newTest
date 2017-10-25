@@ -1,4 +1,4 @@
-package pages;
+package ru.qa.autotest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,6 @@ public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-
     }
 
     public static MainPage onMainPage(WebDriver driver) {
@@ -26,6 +25,7 @@ public class MainPage extends BasePage {
     }
 
     public InsureTraveler openInsureTraveler() {
+        //waitElementVisibility(insureBtn, 5, 1000);
         insureBtn.click();
         waitElementVisibility(insureTraveler, 5, 1000);
         insureTraveler.click();

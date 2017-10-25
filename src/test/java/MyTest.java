@@ -1,8 +1,8 @@
 import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import pages.MainPage;
-import rule.SberRule;
+import ru.qa.autotest.pages.MainPage;
+import ru.qa.autotest.rule.SberRule;
 
 /**
  * Created by Иванка on 24.10.2017.
@@ -17,11 +17,10 @@ public class MyTest {
     public void test() throws Exception {
         WebDriver driver = rule.getDriver();
 
-        MainPage mainPage = new MainPage(driver);
-        mainPage.onMainPage(driver)
+        MainPage.onMainPage(driver)
                 .openInsureTraveler()
-                .openSelectAmount()
-                .openInputData()
+                .openInsureTravelerChoicePolis("Страхование путешественников")
+                .openInsureTravelerRegistration()
                 .fill()
                 .check();
 

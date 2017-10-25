@@ -1,10 +1,13 @@
-package pages;
+package ru.qa.autotest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,5 +33,21 @@ public abstract class BasePage {
     public void waitElementVisibility(WebElement element, long timeOutInSec, long sleepInMillis) {
         Wait<WebDriver> wait = new WebDriverWait(driver, timeOutInSec, sleepInMillis);
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void switchToNewWindowOnClick(WebElement element, long timeOutInSec) {
+        final Set<String> oldWindowsSet = driver.getWindowHandles();
+        element.click();
+        String newWindowHandle = (new WebDriverWait(driver, timeOutInSec))
+                .until(new ExpectedCondition<String>() {
+                           public String apply(WebDriver driver) {
+                               Set<String> newWindowsSet = driver.getWindowHandles();
+                               newWindowsSet.removeAll(oldWindowsSet);
+                               return newWindowsSet.size() > 0 ?
+                                       newWindowsSet.iterator().next() : null;
+                           }
+                       }
+                );
+        driver.switchTo().window(newWindowHandle);
     }
 }
