@@ -21,8 +21,8 @@ public class MyTest {
                 .openInsureTraveler()
                 .openInsureTravelerChoicePolis("Страхование путешественников")
                 .openInsureTravelerRegistration()
-                .fill()
-                .check();
+                .fillDate()
+                .checkDate();
 
     }
 

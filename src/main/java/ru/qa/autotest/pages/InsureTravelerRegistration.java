@@ -74,7 +74,7 @@ public class InsureTravelerRegistration extends BasePage{
         loadPersonalDataFromProperties();
     }
 
-    public InsureTravelerRegistration fill() {
+    public InsureTravelerRegistration fillDate() {
         fillField(insuredSurnameInput, insured_surname);
         fillField(insuredNameInput, insured_name);
         fillField(insuredBirthDateInput, insured_birthDate);
@@ -89,7 +89,7 @@ public class InsureTravelerRegistration extends BasePage{
         fillField(issuePlaceInput, issuePlace);
         return this;
     }
-    public InsureTravelerRegistration check() {
+    public InsureTravelerRegistration checkDate() {
         checkFieldText(insuredSurnameInput, insured_surname);
         checkFieldText(insuredNameInput, insured_name);
         checkFieldText(insuredBirthDateInput, checrInsured_birthDate);
